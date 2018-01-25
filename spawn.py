@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import os, sys, subprocess
 
 for loc in os.listdir("."):
