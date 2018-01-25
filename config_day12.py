@@ -15,7 +15,7 @@ output = pipe.communicate()[0]
 
 if "ft_display_file" not in os.listdir(os.getcwd()):
         print("ex00: " + output)
-	print("DUM DUM DUM DUM: Make FAILED. File ft_display_file not found. " + ' '.join(os.listdir(os.getcwd())))
+	print("DUM DUM DUM DUM DUM DUM: Make FAILED. File ft_display_file not found. " + ' '.join(os.listdir(os.getcwd())))
 	sys.exit(1)
 
 #Display output text of files
@@ -26,7 +26,7 @@ if output != "File name missing.\n":
 	print("Error on ex00")
 	print("I GOT: " + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: File name missing\\n")
-	print("DUM DUM DUM DUM!")
+	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 pipe = subprocess.Popen(["./ft_display_file", "T", "T"], stdout=subprocess.PIPE)
@@ -36,7 +36,7 @@ if output != "Too many arguments.\n":
 	print("Error on ex00")
 	print("I GOT: " + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: Too many arguments.\\n")
-	print("DUM DUM DUM DUM!")
+	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 pipe = subprocess.Popen(["./ft_display_file", "Makefile"], stdout=subprocess.PIPE)
@@ -46,7 +46,7 @@ if output != "*contenu du Makefile*\n":
 	print("Error on ex00")
 	print("I GOT: " + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: *contenu du Makefile*\\n")
-	print("DUM DUM DUM DUM!")
+	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 #Actually test shit
@@ -57,7 +57,7 @@ if output != text:
 	print("Error on ex00")
 	print("I GOT: \n" + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: \n" + text.replace("\n", "\\n"))
-	print("DUM DUM DUM DUM!")
+	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 #Clean up
@@ -67,7 +67,7 @@ output = pipe.communicate()[0]
 if "ft_display_file" in os.listdir(os.getcwd()):
 	print("Erorr on ex00")
 	print(output)
-	print("DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(os.getcwd())))
+	print("DUM DUM DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(os.getcwd())))
 	sys.exit(1)
 
 print("ex00 GOOD!!! One smart for you!")
@@ -84,7 +84,7 @@ output = pipe.communicate()[0]
 if "ft_cat" not in os.listdir("."):
 	print("Erorr on ex01")
 	print(output)
-	print("DUM DUM DUM DUM: Make FAILED. File ft_cat not found. " + ' '.join(os.listdir(".")))
+	print("DUM DUM DUM DUM DUM DUM: Make FAILED. File ft_cat not found. " + ' '.join(os.listdir(".")))
 	sys.exit(1)
 
 #Test opening files
@@ -95,7 +95,7 @@ if output[0:len(output)-1] != text:
 	print("Erorr on ex00")
 	print("I GOT: " + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: " + text.replace("\n", "\\n"))
-	print("DUM DUM DUM DUM!")
+	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 #Test reading from stdin
@@ -106,7 +106,7 @@ if output[0:len(output)-1] != text:
 	print("Erorr on ex00")
 	print("I GOT: " + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: " + text.replace("\n", "\\n"))
-	print("DUM DUM DUM DUM!")
+	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 #Clean up
@@ -115,7 +115,7 @@ output = pipe.communicate()[0]
 
 if "ft_display_file" in os.listdir(os.getcwd()):
 	print(output)
-	print("DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(os.getcwd())))
+	print("DUM DUM DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(os.getcwd())))
 	sys.exit(1)
 
 print("ex01 GOOD!!! One smart for you!")
