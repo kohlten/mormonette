@@ -4,7 +4,7 @@ import sys
 
 #--------------------------ex01--------------------------
 os.chdir("work/ex00")
-text = ('a' * 10 + '\n') * 60
+text = "Hello world!\n" * 10
 file = open("test.txt", "w")
 file.write(text);
 file.close()
@@ -94,25 +94,23 @@ output = pipe.communicate()[0]
 if output != text:
 	print("Erorr on ex00")
 	print(len(output), len(text))
-	print("I GOT: " + output.replace("\n", "\\n"))
-	print("WHAT I EXPECTED: " + text.replace("\n", "\\n"))
+	print("I GOT: \n" + output.replace("\n", "\\n"))
+	print("WHAT I EXPECTED: \n" + text.replace("\n", "\\n"))
 	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 #Test reading from stdin
-'''
-ERROR CHECK
-pipe = subprocess.Popen(["echo", text], stdout=subprocess.PIPE, shell=True)
+pipe = subprocess.Popen(["echo", text], stdout=subprocess.PIPE)
+pipe = subprocess.Popen(["./ft_cat"], stdin=pipe.stdout, stdout=subprocess.PIPE)
 output = pipe.communicate()[0]
 
 if output != text:
 	print("Erorr on ex00")
 	print(len(output), len(text))
-	print("I GOT: " + output.replace("\n", "\\n"))
-	print("WHAT I EXPECTED: " + text.replace("\n", "\\n"))
+	print("I GOT: \n" + output.replace("\n", "\\n"))
+	print("WHAT I EXPECTED: \n" + text.replace("\n", "\\n"))
 	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
-'''
 
 #Clean up
 pipe = subprocess.Popen(["make", "clean"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
