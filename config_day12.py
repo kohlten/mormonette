@@ -15,7 +15,7 @@ output = pipe.communicate()[0]
 
 if "ft_display_file" not in os.listdir(os.getcwd()):
 	print("ex00: " + output)
-	print("DUM DUM DUM DUM DUM DUM: Make FAILED. File ft_display_file not found. " + ' '.join(os.listdir(os.getcwd())))
+	print("DUM DUM DUM DUM DUM DUM: Make FAILED. File ft_display_file not found. " + ' '.join(os.listdir(".")))
 	sys.exit(1)
 
 #Display output text of files
@@ -67,7 +67,7 @@ output = pipe.communicate()[0]
 if "ft_display_file" in os.listdir(os.getcwd()):
 	print("Erorr on ex00")
 	print(output)
-	print("DUM DUM DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(os.getcwd())))
+	print("DUM DUM DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(".")))
 	sys.exit(1)
 
 print("ex00 GOOD!!! One smart for you!")
@@ -118,7 +118,7 @@ output = pipe.communicate()[0]
 
 if "ft_display_file" in os.listdir(os.getcwd()):
 	print(output)
-	print("DUM DUM DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(os.getcwd())))
+	print("DUM DUM DUM DUM DUM DUM: Make FAILED. ft_display_file still found! " + ' '.join(os.listdir(".")))
 	sys.exit(1)
 
 print("ex01 GOOD!!! One smart for you!")
