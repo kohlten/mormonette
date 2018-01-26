@@ -4,7 +4,7 @@ import sys
 
 #--------------------------ex01--------------------------
 os.chdir("work/ex00")
-text = "HELLO WORLD!\n"
+text = ('a' * 10 + '\n') * 60
 file = open("test.txt", "w")
 file.write(text);
 file.close()
@@ -14,7 +14,7 @@ pipe = subprocess.Popen(["make"], stdout=subprocess.PIPE, stderr=subprocess.PIPE
 output = pipe.communicate()[0]
 
 if "ft_display_file" not in os.listdir(os.getcwd()):
-        print("ex00: " + output)
+	print("ex00: " + output)
 	print("DUM DUM DUM DUM DUM DUM: Make FAILED. File ft_display_file not found. " + ' '.join(os.listdir(os.getcwd())))
 	sys.exit(1)
 
@@ -91,23 +91,28 @@ if "ft_cat" not in os.listdir("."):
 pipe = subprocess.Popen(["./ft_cat", "test.txt"], stdout=subprocess.PIPE)
 output = pipe.communicate()[0]
 
-if output[0:len(output)-1] != text:
+if output != text:
 	print("Erorr on ex00")
+	print(len(output), len(text))
 	print("I GOT: " + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: " + text.replace("\n", "\\n"))
 	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
 
 #Test reading from stdin
-pipe = subprocess.Popen(["echo", text, "|", "./ft_cat"], stdout=subprocess.PIPE)
+'''
+ERROR CHECK
+pipe = subprocess.Popen(["echo", text], stdout=subprocess.PIPE, shell=True)
 output = pipe.communicate()[0]
 
-if output[0:len(output)-1] != text:
+if output != text:
 	print("Erorr on ex00")
+	print(len(output), len(text))
 	print("I GOT: " + output.replace("\n", "\\n"))
 	print("WHAT I EXPECTED: " + text.replace("\n", "\\n"))
 	print("DUM DUM DUM DUM DUM DUM!")
 	sys.exit(1);
+'''
 
 #Clean up
 pipe = subprocess.Popen(["make", "clean"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
