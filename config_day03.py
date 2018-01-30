@@ -113,8 +113,61 @@ ft_div_mod.argstypes = [ctypes.c_int, ctypes.c_int, ctypes.POINTER(ctypes.c_int)
 ft_div_mod.restype = None
 ft_div_mod(x, y, ctypes.byref(div), ctypes.byref(mod))
 
-if div.value != 6 or mod.value != 3:
-	print("Error: ex03 failed!\nI got x:" + str(div.value) + " y: " + str(mod.value) + "\nI expected 6 2")
+if div.value != 6 or mod.value != 2:
+	print("Error: ex03 failed!\nI got div: " + str(div.value) + " mod: " + str(mod.value) + "\nI expected div: 6 mod: 2")
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
 print("ex03 RIGHT! One smart for you!")
+#--------------ex04-----------------#
+try:
+	chdir("../ex04")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -shared -o ft_ultimate_div_mod ft_ultimate_div_mod.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex04.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+x = ctypes.c_int(20)
+y = ctypes.c_int(3)
+lib = ctypes.CDLL("./ft_ultimate_div_mod")
+ft_ultimate_div_mod = lib.ft_ultimate_div_mod
+ft_ultimate_div_mod.argstypes = [ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int)]
+ft_ultimate_div_mod.restype = None
+ft_ultimate_div_mod(ctypes.byref(x), ctypes.byref(y))
+
+if x.value != 6 or y.value != 2:
+	print("Error: ex04 failed!\nI got x: " + str(x.value) + " x: " + str(x.value) + "\nI expected x: 6 y: 2")
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex04 RIGHT! One smart for you!")
+#--------------ex01-----------------#
+try:
+	chdir("../ex01")
+except OSError:
+	print("Done")
+	exit(1)
+
+open("main.c", "w").write("\nvoid ft_putstr(char *str);\n\n" + main[0] + "ft_putstr(\"Hello world!\n\");\n\tft_putstr(\"Hello world!\n\");\n\t" + main[1])
+pipe = Popen("gcc -o ft_ultimate_ft ft_ultimate_ft.c main.c".split(" "), stderr=PIPE)
+err = pipe.communicate()[1]
+
+if err != "":
+	print("Compiling failed on ex01!")
+	print(err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+pipe = Popen(["./ft_ultimate_ft"], stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+if output != "42":
+	print("Error: ex01 failed!\nI got " + output + "\nI expected 42")
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex01 RIGHT! One smart for you!")

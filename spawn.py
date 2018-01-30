@@ -12,7 +12,7 @@ files_to_be_copied = []
 if "ex00" in os.listdir("./work"):
 	f = os.listdir("work")
 	for i in range(len(f)):
-		subprocess.call(["rm", "-R", "work/" + f[i]])
+		subprocess.call(["rm", "-Rf", "work/" + f[i]])
 
 for i in range(len(folders)):
 	if folders[i][0:2] == "ex":
@@ -37,5 +37,4 @@ for i in range(len(files_data)):
 	file.close()
 	file = "work/" + files_to_be_copied[i][:len(files_to_be_copied[i]) - 1]
 
-print(location)
 subprocess.call(["python", "config_" + location + ".py"])
