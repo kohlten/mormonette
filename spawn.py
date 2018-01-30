@@ -2,7 +2,7 @@
 import os, sys, subprocess
 
 for loc in os.listdir("."):
-	if "day" in loc:
+	if "day" in loc and len(loc) == 5:
 		location = loc
 		break
 folders = os.listdir(location)
@@ -37,4 +37,5 @@ for i in range(len(files_data)):
 	file.close()
 	file = "work/" + files_to_be_copied[i][:len(files_to_be_copied[i]) - 1]
 
+print(location)
 subprocess.call(["python", "config_" + location + ".py"])
