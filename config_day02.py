@@ -175,7 +175,7 @@ pipe = Popen(["./ft_print_comb2"], stdout=PIPE)
 output = pipe.communicate()[0]
 hash = md5(output)
 if hash.hexdigest() != comb:
-	print("Error:\nex05 is not right:\n" + output[0: 20])
+	print("Error:\nex05 is not right:\n" + output[0: 40])
 	print("Expected: 00 01, 00 02, 00 03, 00 04, 00 05, ..., 00 99, 01 02, ..., 97 99, 98 99")
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
@@ -197,7 +197,7 @@ pipe = Popen("gcc -o ft_putnbr ft_putnbr.c ft_putchar.c main.c".split(" "), stdo
 output, err = pipe.communicate()
 
 if err != "":
-	print("Compilation failed on ex00:")
+	print("Compilation failed on ex06:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
