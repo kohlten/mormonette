@@ -227,7 +227,7 @@ pipe = Popen("gcc -o ft_print_combn ft_print_combn.c ft_putchar.c main.c".split(
 output, err = pipe.communicate()
 
 if err != "":
-	print("Compilation failed on ex05:")
+	print("Compilation failed on ex07:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
