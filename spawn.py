@@ -37,4 +37,4 @@ for i in range(len(files_data)):
 	file.close()
 	file = "work/" + files_to_be_copied[i][:len(files_to_be_copied[i]) - 1]
 
-subprocess.call(["python", "config_day12.py"])
+subprocess.call(["python", "config_" + location + ".py"])
