@@ -87,7 +87,7 @@ if err != "":
 pipe = Popen(["./ft_print_numbers"], stdout=PIPE)
 output = pipe.communicate()[0]
 if output != "0123456789":
-	print("Error:\nex02 is not right:\n" + output)
+	print("Error: ex02 is not right:\n" + output)
 	print("Expected: 0123456789")
 	print("Can't you count?")
 	print("DUM DUM DUM DUM DUM DUM")
@@ -116,7 +116,7 @@ if err != "":
 pipe = Popen(["./ft_is_negative"], stdout=PIPE)
 output = pipe.communicate()[0]
 if output != "PNPP":
-	print("Error:\nex03 is not right:\n" + output)
+	print("Error: ex03 is not right:\n" + output)
 	print("Expected: PNPP")
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
@@ -145,7 +145,7 @@ if err != "":
 pipe = Popen(["./ft_print_comb"], stdout=PIPE)
 output = pipe.communicate()[0]
 if output != comb:
-	print("Error:\nex04 is not right:\n" + output)
+	print("Error: ex04 is not right:\n" + output)
 	print("Expected: " + comb)
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
@@ -175,7 +175,7 @@ pipe = Popen(["./ft_print_comb2"], stdout=PIPE)
 output = pipe.communicate()[0]
 hash = md5(output)
 if hash.hexdigest() != comb:
-	print("Error:\nex05 is not right:\n" + output[0: 40])
+	print("Error: ex05 is not right:\n" + output[0: 40])
 	print("Expected: 00 01, 00 02, 00 03, 00 04, 00 05, ..., 00 99, 01 02, ..., 97 99, 98 99")
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
@@ -206,8 +206,8 @@ if err != "":
 pipe = Popen(["./ft_putnbr"], stdout=PIPE)
 output = pipe.communicate()[0]
 if output != "42\n-1\n-25\n0\n2147483647\n-2147483647":
-	print("Error:\nex06 is not right:\n" + output)
-	print("Expected: 42\n-1\n-25\n0\n2147483647\n-2147483647")
+	print("Error: ex06 is not right:\n" + output)
+	print("Expected: \n42\n-1\n-25\n0\n2147483647\n-2147483647")
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
 
@@ -235,7 +235,7 @@ if err != "":
 pipe = Popen(["./ft_print_combn"], stdout=PIPE)
 output = pipe.communicate()[0]
 if output != '\n'.join(comb):
-	print("Error:\nex07 is not right:\n" + output)
+	print("Error: ex07 is not right:\n" + output)
 	print("Expected: " + '\n'.join(comb))
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
