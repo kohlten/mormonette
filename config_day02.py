@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from subprocess import Popen, PIPE
 from os import listdir, chdir
 from ctypes import CDLL

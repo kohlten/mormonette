@@ -1,9 +1,12 @@
+#!/usr/bin/python
+
 from subprocess import Popen, PIPE
 from sys import exit
 from os import chdir
 import ctypes
 
 main = ["int main() {\n\t", "\n\treturn 0;\n}"]
+text_putchar = "#include <unistd.h>\n\nvoid ft_putchar(char c)\n{\n\twrite(1, &c, 1);\n}"
 
 #--------------ex00-----------------#
 try:
@@ -147,27 +150,57 @@ if x.value != 6 or y.value != 2:
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
 print("ex04 RIGHT! One smart for you!")
-#--------------ex01-----------------#
+#--------------ex05-----------------#
 try:
-	chdir("../ex01")
+	chdir("../ex05")
 except OSError:
 	print("Done")
 	exit(1)
 
-open("main.c", "w").write("\nvoid ft_putstr(char *str);\n\n" + main[0] + "ft_putstr(\"Hello world!\n\");\n\tft_putstr(\"Hello world!\n\");\n\t" + main[1])
-pipe = Popen("gcc -o ft_ultimate_ft ft_ultimate_ft.c main.c".split(" "), stderr=PIPE)
+open("ft_putchar.c", "w").write(text_putchar)
+open("main.c", "w").write("\nvoid ft_putstr(char *str);\n\n" + main[0] + "ft_putstr(\"Hello world!\\n\");\n\tft_putstr(\"test1\\n\");\n\tft_putstr(\"test2\\n\");\n\tft_putstr(\"\");\n\tft_putstr(\"\");" + main[1])
+pipe = Popen("gcc -o ft_putstr ft_putstr.c ft_putchar.c main.c".split(" "), stderr=PIPE)
 err = pipe.communicate()[1]
 
 if err != "":
-	print("Compiling failed on ex01!")
+	print("Compiling failed on ex05!")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
 
-pipe = Popen(["./ft_ultimate_ft"], stdout=PIPE, stderr=PIPE)
+pipe = Popen(["./ft_putstr"], stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
-if output != "42":
-	print("Error: ex01 failed!\nI got " + output + "\nI expected 42")
+if output != "Hello world!\ntest1\ntest2\n":
+	print("Error: ex05 failed!\nI got: \n" + output + "\nI expected:\nHello world!\ntest1\ntest2\n")
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
-print("ex01 RIGHT! One smart for you!")
+print("ex05 RIGHT! One smart for you!")
+#--------------ex06-----------------#
+try:
+	chdir("../ex06")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -shared -o ft_strlen ft_strlen.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex06.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+lib = ctypes.CDLL("./ft_strlen")
+ft_strlen = lib.ft_strlen
+ft_strlen.argstypes = [ctypes.c_char_p]
+ft_strlen.restype = ctypes.c_int
+len1 = ft_strlen("Hey")
+len2 = ft_strlen("")
+len3 = ft_strlen("THE WORLD!")
+
+if len1 != 3 or len2 != 0 or len3 != 10:
+	print("Error: ex06 failed!\nI got len1: " + str(len1) + " len2: " + str(len2) + " len3: " + str(len3) + "\nI expected len1: 3 len2: 0 len3: 10")
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex06 RIGHT! One smart for you!")
