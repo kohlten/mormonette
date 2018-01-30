@@ -19,6 +19,7 @@ if err != "":
 	print("Failed to compile on ex00.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
 
 val = ctypes.c_int(9)
 lib = ctypes.CDLL("./ft_ft")
@@ -30,7 +31,8 @@ ft_ft(ctypes.byref(val))
 if val.value != 42:
 	print("Error: ex00 failed!\nI got " + str(val.value) + "\nI expected 42")
 	print("DUM DUM DUM DUM DUM DUM")
-
+	exit(1)
+print("ex00 RIGHT! One smart for you!")
 #--------------ex01-----------------#
 try:
 	chdir("../ex01")
@@ -47,9 +49,72 @@ if err != "":
 	print("Compiling failed on ex01!")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
 
 pipe = Popen(["./ft_ultimate_ft"], stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 if output != "42":
 	print("Error: ex01 failed!\nI got " + output + "\nI expected 42")
 	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex01 RIGHT! One smart for you!")
+#--------------ex02-----------------#
+try:
+	chdir("../ex02")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -shared -o ft_swap ft_swap.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex02.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+x = ctypes.c_int(10)
+y = ctypes.c_int(20)
+lib = ctypes.CDLL("./ft_swap")
+ft_swap = lib.ft_swap
+ft_swap.argstypes = [ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int)]
+ft_swap.restype = None
+ft_swap(ctypes.byref(x), ctypes.byref(y))
+
+if x.value != 20 and y.value != 10:
+	print("Error: ex02 failed!\nI got x:" + str(x.value) + " y: " + str(y.value) + "\nI expected 20 10")
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex02 RIGHT! One smart for you!")
+#--------------ex03-----------------#
+try:
+	chdir("../ex03")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -shared -o ft_div_mod ft_div_mod.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex03.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+x = ctypes.c_int(20)
+y = ctypes.c_int(3)
+div = ctypes.c_int(0)
+mod = ctypes.c_int(0)
+lib = ctypes.CDLL("./ft_div_mod")
+ft_div_mod = lib.ft_div_mod
+ft_div_mod.argstypes = [ctypes.c_int, ctypes.c_int, ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int)]
+ft_div_mod.restype = None
+ft_div_mod(x, y, ctypes.byref(div), ctypes.byref(mod))
+
+if div.value != 6 or mod.value != 3:
+	print("Error: ex03 failed!\nI got x:" + str(div.value) + " y: " + str(mod.value) + "\nI expected 6 2")
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex03 RIGHT! One smart for you!")
