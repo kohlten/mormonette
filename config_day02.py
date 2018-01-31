@@ -32,17 +32,17 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	#run ft_print_alphabet
+	pipe = Popen(["./ft_print_alphabet"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	if output != "abcdefghijklmnopqrstuvwxyz":
+		print("Error:\nex00 is not right:\n" + output)
+		print("Expected: abcdefghijklmnopqrstuvwxyz")
+		print("DUM DUM DUM DUM DUM DUM")
+		exit(1)
 
-#run ft_print_alphabet
-pipe = Popen(["./ft_print_alphabet"], stdout=PIPE)
-output = pipe.communicate()[0]
-if output != "abcdefghijklmnopqrstuvwxyz":
-	print("Error:\nex00 is not right:\n" + output)
-	print("Expected: abcdefghijklmnopqrstuvwxyz")
-	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
-
-print("ex00 RIGHT! One smart for you!")
+	print("ex00 RIGHT! One smart for you!")
 #--------------ex01-----------------#
 try:
 	chdir ("../ex01")
@@ -62,17 +62,17 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	pipe = Popen(["./ft_print_reverse_alphabet"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	if output != "zyxwvutsrqponmlkjihgfedcba":
+		print("Error:\nex01 is not right:\n" + output)
+		print("Expected: zyxwvutsrqponmlkjihgfedcba")
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
 
-pipe = Popen(["./ft_print_reverse_alphabet"], stdout=PIPE)
-output = pipe.communicate()[0]
-if output != "zyxwvutsrqponmlkjihgfedcba":
-	print("Error:\nex01 is not right:\n" + output)
-	print("Expected: zyxwvutsrqponmlkjihgfedcba")
-	print("DUM DUM DUM DUM DUM DUM")
-	if option_i == 0:
-		exit(1)
-
-print("ex01 RIGHT! One smart for you!")
+	print("ex01 RIGHT! One smart for you!")
 #--------------ex02-----------------#
 try:
 	chdir ("../ex02")
@@ -92,18 +92,18 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	pipe = Popen(["./ft_print_numbers"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	if output != "0123456789":
+		print("Error: ex02 is not right:\n" + output)
+		print("Expected: 0123456789")
+		print("Can't you count?")
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
 
-pipe = Popen(["./ft_print_numbers"], stdout=PIPE)
-output = pipe.communicate()[0]
-if output != "0123456789":
-	print("Error: ex02 is not right:\n" + output)
-	print("Expected: 0123456789")
-	print("Can't you count?")
-	print("DUM DUM DUM DUM DUM DUM")
-	if option_i == 0:
-		exit(1)
-
-print("ex02 RIGHT! One smart for you!")
+	print("ex02 RIGHT! One smart for you!")
 #--------------ex03-----------------#
 try:
 	chdir ("../ex03")
@@ -123,17 +123,17 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	pipe = Popen(["./ft_is_negative"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	if output != "PNPP":
+		print("Error: ex03 is not right:\n" + output)
+		print("Expected: PNPP")
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
 
-pipe = Popen(["./ft_is_negative"], stdout=PIPE)
-output = pipe.communicate()[0]
-if output != "PNPP":
-	print("Error: ex03 is not right:\n" + output)
-	print("Expected: PNPP")
-	print("DUM DUM DUM DUM DUM DUM")
-	if option_i == 0:
-		exit(1)
-
-print("ex03 RIGHT! One smart for you!")
+	print("ex03 RIGHT! One smart for you!")
 #--------------ex04-----------------#
 try:
 	chdir ("../ex04")
@@ -154,17 +154,17 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	pipe = Popen(["./ft_print_comb"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	if output != comb:
+		print("Error: ex04 is not right:\n" + output)
+		print("Expected: " + comb)
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
 
-pipe = Popen(["./ft_print_comb"], stdout=PIPE)
-output = pipe.communicate()[0]
-if output != comb:
-	print("Error: ex04 is not right:\n" + output)
-	print("Expected: " + comb)
-	print("DUM DUM DUM DUM DUM DUM")
-	if option_i == 0:
-		exit(1)
-
-print("ex04 RIGHT! One smart for you!")
+	print("ex04 RIGHT! One smart for you!")
 #--------------ex05-----------------#
 try:
 	chdir ("../ex05")
@@ -185,18 +185,18 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	pipe = Popen(["./ft_print_comb2"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	hash = md5(output)
+	if hash.hexdigest() != comb:
+		print("Error: ex05 is not right:\n" + output[0: 40])
+		print("Expected: 00 01, 00 02, 00 03, 00 04, 00 05, ..., 00 99, 01 02, ..., 97 99, 98 99")
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
 
-pipe = Popen(["./ft_print_comb2"], stdout=PIPE)
-output = pipe.communicate()[0]
-hash = md5(output)
-if hash.hexdigest() != comb:
-	print("Error: ex05 is not right:\n" + output[0: 40])
-	print("Expected: 00 01, 00 02, 00 03, 00 04, 00 05, ..., 00 99, 01 02, ..., 97 99, 98 99")
-	print("DUM DUM DUM DUM DUM DUM")
-	if option_i == 0:
-		exit(1)
-
-print("ex05 RIGHT! One smart for you!")
+	print("ex05 RIGHT! One smart for you!")
 #--------------ex06-----------------#
 try:
 	chdir ("../ex06")
@@ -218,18 +218,18 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	#run ft_print_alphabet
+	pipe = Popen(["./ft_putnbr"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	if output != "42\n-1\n-25\n0\n2147483647\n-2147483647":
+		print("Error: ex06 is not right:\n" + output)
+		print("Expected: \n42\n-1\n-25\n0\n2147483647\n-2147483647")
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
 
-#run ft_print_alphabet
-pipe = Popen(["./ft_putnbr"], stdout=PIPE)
-output = pipe.communicate()[0]
-if output != "42\n-1\n-25\n0\n2147483647\n-2147483647":
-	print("Error: ex06 is not right:\n" + output)
-	print("Expected: \n42\n-1\n-25\n0\n2147483647\n-2147483647")
-	print("DUM DUM DUM DUM DUM DUM")
-	if option_i == 0:
-		exit(1)
-
-print("ex06 RIGHT! One smart for you!")
+	print("ex06 RIGHT! One smart for you!")
 #--------------ex07-----------------#
 try:
 	chdir ("../ex07")
@@ -250,16 +250,16 @@ if err != "":
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)
+else:
+	pipe = Popen(["./ft_print_combn"], stdout=PIPE)
+	output = pipe.communicate()[0]
+	if output != '\n'.join(comb):
+		print("Error: ex07 is not right:\n" + output)
+		print("Expected: " + '\n'.join(comb))
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
 
-pipe = Popen(["./ft_print_combn"], stdout=PIPE)
-output = pipe.communicate()[0]
-if output != '\n'.join(comb):
-	print("Error: ex07 is not right:\n" + output)
-	print("Expected: " + '\n'.join(comb))
-	print("DUM DUM DUM DUM DUM DUM")
+	print("ex07 RIGHT! One smart for you!")
 	if option_i == 0:
-		exit(1)
-
-print("ex07 RIGHT! One smart for you!")
-if option_i == 0:
-	print("You are SMART SMART SMART SMART SMART SMART!")
+		print("You are SMART SMART SMART SMART SMART SMART!")
