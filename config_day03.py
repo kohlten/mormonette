@@ -265,7 +265,7 @@ if test1 != 42 or test2 != -42 or test3 != 0 or test4 != 0 or test5 != 214748364
 	print("Error: ex08 failed!\nI got:\n" + str(test1) + " " + str(test2) + " " + str(test3) + " " + str(test4) + " " + str(test5) + " " + str(test6) + " " + str(test7))
 	print("I expected:\n42 -42 0 0 2147483647 -2147483648 123")
 	print("DUM DUM DUM DUM DUM DUM")
-	#exit(1)
+	exit(1)
 print("ex08 RIGHT! One smart for you!")
 #--------------ex09-----------------#
 try:
@@ -297,3 +297,4 @@ if array[0] != 1 or array[1] != 2 or array[2] != 3:
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
 print("ex09 RIGHT! One smart for you!")
+print("You got everything right!\nYou are SMART SMART SMART SMART SMART SMART")
