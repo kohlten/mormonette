@@ -273,17 +273,15 @@ lib = ctypes.CDLL("./ft_atoi")
 ft_atoi = lib.ft_atoi
 ft_atoi.argstypes = [ctypes.c_char_p]
 ft_atoi.restype = ctypes.c_int
-test1 = ft_atoi("42")
-test2 = ft_atoi("-42")
-test3 = ft_atoi("0")
-test4 = ft_atoi("abc42abc")
-test5 = ft_atoi("2147483647")
-test6 = ft_atoi("-2147483648")
-test7 = ft_atoi("\t     \v\r\f+123")
+awnsers = [42, -42, 0, 0, 2147483647, -2147483648, 123]
+tests = []
+strings = ["42", "-42", "0", "abc42abc", "2147483647", "-2147483648", "    \t\n\v\r\f+123"]
+for string in strings:
+	tests.append(ft_atoi(string))
 
-if test1 != 42 or test2 != -42 or test3 != 0 or test4 != 0 or test5 != 2147483647 or test6 != -2147483648 or test7 != 123:
-	print("Error: ex08 failed!\nI got:\n" + str(test1) + " " + str(test2) + " " + str(test3) + " " + str(test4) + " " + str(test5) + " " + str(test6) + " " + str(test7))
-	print("I expected:\n42 -42 0 0 2147483647 -2147483648 123")
+if tests != awnsers:
+	print("Error: ex08 failed!\nI got:\n" + str(tests))
+	print("I expected:\n" + str(strings))
 	print("DUM DUM DUM DUM DUM DUM")
 	if option_i == 0:
 		exit(1)

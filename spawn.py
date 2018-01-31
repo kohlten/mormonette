@@ -3,9 +3,9 @@ import os, sys, subprocess
 
 location = ""
 option_i = ""
-if sys.argv[len(sys.argv) - 1] != "-i" and len(sys.argv) > 1:
-	if "-i" in sys.argv:
+if "-i" in sys.argv:
 		option_i = "-i"
+if len(sys.argv) > 1 and sys.argv[len(sys.argv) - 1] != "-i":
 	if sys.argv[len(sys.argv) - 1] != "-i":
 		location = sys.argv[len(sys.argv) - 1]
 else: 
