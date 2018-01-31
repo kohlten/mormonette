@@ -1,12 +1,15 @@
 #!/usr/bin/python
-
 from subprocess import Popen, PIPE
-from sys import exit
+from sys import exit, argv
 from os import chdir
 import ctypes
 
+option_i = 0
 main = ["int main() {\n\t", "\n\treturn 0;\n}"]
 text_putchar = "#include <unistd.h>\n\nvoid ft_putchar(char c)\n{\n\twrite(1, &c, 1);\n}"
+if len(argv) > 1:
+	if "-i" in argv:
+		option_i = 1
 
 #--------------ex00-----------------#
 try:
@@ -22,7 +25,8 @@ if err != "":
 	print("Failed to compile on ex00.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 val = ctypes.c_int(9)
 lib = ctypes.CDLL("./ft_ft")
@@ -34,7 +38,8 @@ ft_ft(ctypes.byref(val))
 if val.value != 42:
 	print("Error: ex00 failed!\nI got " + str(val.value) + "\nI expected 42")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex00 RIGHT! One smart for you!")
 #--------------ex01-----------------#
 try:
@@ -52,14 +57,16 @@ if err != "":
 	print("Compiling failed on ex01!")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_ultimate_ft"], stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 if output != "42":
 	print("Error: ex01 failed!\nI got " + output + "\nI expected 42")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex01 RIGHT! One smart for you!")
 #--------------ex02-----------------#
 try:
@@ -75,7 +82,8 @@ if err != "":
 	print("Failed to compile on ex02.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 x = ctypes.c_int(10)
 y = ctypes.c_int(20)
@@ -88,7 +96,8 @@ ft_swap(ctypes.byref(x), ctypes.byref(y))
 if x.value != 20 and y.value != 10:
 	print("Error: ex02 failed!\nI got x:" + str(x.value) + " y: " + str(y.value) + "\nI expected 20 10")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex02 RIGHT! One smart for you!")
 #--------------ex03-----------------#
 try:
@@ -104,7 +113,8 @@ if err != "":
 	print("Failed to compile on ex03.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 x = ctypes.c_int(20)
 y = ctypes.c_int(3)
@@ -119,7 +129,8 @@ ft_div_mod(x, y, ctypes.byref(div), ctypes.byref(mod))
 if div.value != 6 or mod.value != 2:
 	print("Error: ex03 failed!\nI got div: " + str(div.value) + " mod: " + str(mod.value) + "\nI expected div: 6 mod: 2")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex03 RIGHT! One smart for you!")
 #--------------ex04-----------------#
 try:
@@ -135,7 +146,8 @@ if err != "":
 	print("Failed to compile on ex04.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 x = ctypes.c_int(20)
 y = ctypes.c_int(3)
@@ -148,7 +160,8 @@ ft_ultimate_div_mod(ctypes.byref(x), ctypes.byref(y))
 if x.value != 6 or y.value != 2:
 	print("Error: ex04 failed!\nI got x: " + str(x.value) + " x: " + str(x.value) + "\nI expected x: 6 y: 2")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex04 RIGHT! One smart for you!")
 #--------------ex05-----------------#
 try:
@@ -166,14 +179,16 @@ if err != "":
 	print("Compiling failed on ex05!")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_putstr"], stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 if output != "Hello world!\ntest1\ntest2\n":
 	print("Error: ex05 failed!\nI got: \n" + output + "\nI expected:\nHello world!\ntest1\ntest2\n")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex05 RIGHT! One smart for you!")
 #--------------ex06-----------------#
 try:
@@ -189,7 +204,8 @@ if err != "":
 	print("Failed to compile on ex06.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 lib = ctypes.CDLL("./ft_strlen")
 ft_strlen = lib.ft_strlen
@@ -202,7 +218,8 @@ len3 = ft_strlen("THE WORLD!")
 if len1 != 3 or len2 != 0 or len3 != 10:
 	print("Error: ex06 failed!\nI got len1: " + str(len1) + " len2: " + str(len2) + " len3: " + str(len3) + "\nI expected len1: 3 len2: 0 len3: 10")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex06 RIGHT! One smart for you!")
 #--------------ex07-----------------#
 try:
@@ -218,7 +235,8 @@ if err != "":
 	print("Failed to compile on ex07.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 lib = ctypes.CDLL("./ft_strrev")
 ft_strrev = lib.ft_strrev
@@ -231,7 +249,8 @@ if test1 != "cba" or test2 != "0123456789":
 	print("Error: ex07 failed!\nI got:\n" + test1 + " " + test2)
 	print("I expected:\ncba 01234567890")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex07 RIGHT! One smart for you!")
 #--------------ex08-----------------#
 try:
@@ -247,7 +266,8 @@ if err != "":
 	print("Failed to compile on ex08.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 lib = ctypes.CDLL("./ft_atoi")
 ft_atoi = lib.ft_atoi
@@ -265,7 +285,8 @@ if test1 != 42 or test2 != -42 or test3 != 0 or test4 != 0 or test5 != 214748364
 	print("Error: ex08 failed!\nI got:\n" + str(test1) + " " + str(test2) + " " + str(test3) + " " + str(test4) + " " + str(test5) + " " + str(test6) + " " + str(test7))
 	print("I expected:\n42 -42 0 0 2147483647 -2147483648 123")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex08 RIGHT! One smart for you!")
 #--------------ex09-----------------#
 try:
@@ -281,7 +302,8 @@ if err != "":
 	print("Failed to compile on ex09.")
 	print("Heres the error:\n " + err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 lib = ctypes.CDLL("./ft_sort_integer_table")
 ft_sort_integer_table = lib.ft_sort_integer_table
@@ -295,6 +317,8 @@ if array[0] != 1 or array[1] != 2 or array[2] != 3:
 	print("Error: ex09 failed!\nI got:\n" + str(array[0]) + str(array[1]) + str(array[2]))
 	print("I expected:\n123")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 print("ex09 RIGHT! One smart for you!")
-print("You got everything right!\nYou are SMART SMART SMART SMART SMART SMART")
+if option_i == 0:
+	print("You got everything right!\nYou are SMART SMART SMART SMART SMART SMART")

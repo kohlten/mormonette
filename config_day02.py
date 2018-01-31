@@ -1,13 +1,16 @@
 #!/usr/bin/python
-
 from subprocess import Popen, PIPE
 from os import listdir, chdir
 from ctypes import CDLL
-from sys import exit
+from sys import exit, argv
 from hashlib import md5
 
+option_i = 0
 text_putchar = "#include <unistd.h>\n\nvoid ft_putchar(char c)\n{\n\twrite(1, &c, 1);\n}"
 main = ["int main() {\n\t", "\n\treturn 0;\n}"]
+if len(argv) > 1:
+	if "-i" in argv:
+		option_i = 1
 
 #--------------ex00-----------------#
 try:
@@ -27,7 +30,8 @@ if err != "":
 	print("Compilation failed on ex00:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 #run ft_print_alphabet
 pipe = Popen(["./ft_print_alphabet"], stdout=PIPE)
@@ -56,7 +60,8 @@ if err != "":
 	print("Compilation failed on ex01:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_print_reverse_alphabet"], stdout=PIPE)
 output = pipe.communicate()[0]
@@ -64,7 +69,8 @@ if output != "zyxwvutsrqponmlkjihgfedcba":
 	print("Error:\nex01 is not right:\n" + output)
 	print("Expected: zyxwvutsrqponmlkjihgfedcba")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 print("ex01 RIGHT! One smart for you!")
 #--------------ex02-----------------#
@@ -84,7 +90,8 @@ if err != "":
 	print("Compilation failed on ex02:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_print_numbers"], stdout=PIPE)
 output = pipe.communicate()[0]
@@ -93,7 +100,8 @@ if output != "0123456789":
 	print("Expected: 0123456789")
 	print("Can't you count?")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 print("ex02 RIGHT! One smart for you!")
 #--------------ex03-----------------#
@@ -113,7 +121,8 @@ if err != "":
 	print("Compilation failed on ex03:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_is_negative"], stdout=PIPE)
 output = pipe.communicate()[0]
@@ -121,7 +130,8 @@ if output != "PNPP":
 	print("Error: ex03 is not right:\n" + output)
 	print("Expected: PNPP")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 print("ex03 RIGHT! One smart for you!")
 #--------------ex04-----------------#
@@ -142,7 +152,8 @@ if err != "":
 	print("Compilation failed on ex04:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_print_comb"], stdout=PIPE)
 output = pipe.communicate()[0]
@@ -150,7 +161,8 @@ if output != comb:
 	print("Error: ex04 is not right:\n" + output)
 	print("Expected: " + comb)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 print("ex04 RIGHT! One smart for you!")
 #--------------ex05-----------------#
@@ -171,7 +183,8 @@ if err != "":
 	print("Compilation failed on ex05:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_print_comb2"], stdout=PIPE)
 output = pipe.communicate()[0]
@@ -180,7 +193,8 @@ if hash.hexdigest() != comb:
 	print("Error: ex05 is not right:\n" + output[0: 40])
 	print("Expected: 00 01, 00 02, 00 03, 00 04, 00 05, ..., 00 99, 01 02, ..., 97 99, 98 99")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 print("ex05 RIGHT! One smart for you!")
 #--------------ex06-----------------#
@@ -202,7 +216,8 @@ if err != "":
 	print("Compilation failed on ex06:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 #run ft_print_alphabet
 pipe = Popen(["./ft_putnbr"], stdout=PIPE)
@@ -211,7 +226,8 @@ if output != "42\n-1\n-25\n0\n2147483647\n-2147483647":
 	print("Error: ex06 is not right:\n" + output)
 	print("Expected: \n42\n-1\n-25\n0\n2147483647\n-2147483647")
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 print("ex06 RIGHT! One smart for you!")
 #--------------ex07-----------------#
@@ -232,7 +248,8 @@ if err != "":
 	print("Compilation failed on ex07:")
 	print(err)
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 pipe = Popen(["./ft_print_combn"], stdout=PIPE)
 output = pipe.communicate()[0]
@@ -240,7 +257,9 @@ if output != '\n'.join(comb):
 	print("Error: ex07 is not right:\n" + output)
 	print("Expected: " + '\n'.join(comb))
 	print("DUM DUM DUM DUM DUM DUM")
-	exit(1)
+	if option_i == 0:
+		exit(1)
 
 print("ex07 RIGHT! One smart for you!")
-print("You are SMART SMART SMART SMART SMART SMART!")
+if option_i == 0:
+	print("You are SMART SMART SMART SMART SMART SMART!")

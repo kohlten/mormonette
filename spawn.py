@@ -2,8 +2,12 @@
 import os, sys, subprocess
 
 location = ""
-if len(sys.argv) > 1:
-	location = sys.argv[1]
+option_i = ""
+if sys.argv[len(sys.argv) - 1] != "-i" and len(sys.argv) > 1:
+	if "-i" in sys.argv:
+		option_i = "-i"
+	if sys.argv[len(sys.argv) - 1] != "-i":
+		location = sys.argv[len(sys.argv) - 1]
 else: 
 	for loc in os.listdir("."):
 		if "day" in loc and len(loc) == 5:
@@ -48,4 +52,4 @@ for i in range(len(files_data)):
 	file.close()
 	file = "work/" + files_to_be_copied[i][:len(files_to_be_copied[i]) - 1]
 
-subprocess.call(["python", "config_" + location + ".py"])
+subprocess.call(["python", "config_" + location + ".py", option_i])
