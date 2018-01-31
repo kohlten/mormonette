@@ -15,7 +15,7 @@ except OSError:
 	print("Done")
 	exit(1)
 
-pipe = Popen("gcc -shared -o ft_ft ft_ft.c".split(" "), stdout=PIPE, stderr=PIPE)
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_ft ft_ft.c".split(" "), stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 
 if err != "":
@@ -45,7 +45,7 @@ except OSError:
 
 #Pleasssssssseeee, dont actually check this one yourself. It is cancer incarnate! I'm dying on the inside writing this.
 open("main.c", "w").write("#include <stdio.h>\nvoid ft_ultimate_ft(int *********nbr);\n\n" + main[0] + "int a = 15;\n\tint* b = &a;\n\tint** c = &b;\n\tint*** d = &c;\n\tint**** e = &d;\n\tint***** f = &e;\n\tint****** g = &f;\n\tint******* h = &g;\n\tint******** i = &h;\n\tint********* j = &i;\n\tft_ultimate_ft(j);\n\tprintf(\"%d\", a);" + main[1])
-pipe = Popen("gcc -o ft_ultimate_ft ft_ultimate_ft.c main.c".split(" "), stderr=PIPE)
+pipe = Popen("gcc -Wall -Wextra -Werror -o ft_ultimate_ft ft_ultimate_ft.c main.c".split(" "), stderr=PIPE)
 err = pipe.communicate()[1]
 
 if err != "":
@@ -68,7 +68,7 @@ except OSError:
 	print("Done")
 	exit(1)
 
-pipe = Popen("gcc -shared -o ft_swap ft_swap.c".split(" "), stdout=PIPE, stderr=PIPE)
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_swap ft_swap.c".split(" "), stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 
 if err != "":
@@ -97,7 +97,7 @@ except OSError:
 	print("Done")
 	exit(1)
 
-pipe = Popen("gcc -shared -o ft_div_mod ft_div_mod.c".split(" "), stdout=PIPE, stderr=PIPE)
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_div_mod ft_div_mod.c".split(" "), stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 
 if err != "":
@@ -128,7 +128,7 @@ except OSError:
 	print("Done")
 	exit(1)
 
-pipe = Popen("gcc -shared -o ft_ultimate_div_mod ft_ultimate_div_mod.c".split(" "), stdout=PIPE, stderr=PIPE)
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_ultimate_div_mod ft_ultimate_div_mod.c".split(" "), stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 
 if err != "":
@@ -159,7 +159,7 @@ except OSError:
 
 open("ft_putchar.c", "w").write(text_putchar)
 open("main.c", "w").write("\nvoid ft_putstr(char *str);\n\n" + main[0] + "ft_putstr(\"Hello world!\\n\");\n\tft_putstr(\"test1\\n\");\n\tft_putstr(\"test2\\n\");\n\tft_putstr(\"\");\n\tft_putstr(\"\");" + main[1])
-pipe = Popen("gcc -o ft_putstr ft_putstr.c ft_putchar.c main.c".split(" "), stderr=PIPE)
+pipe = Popen("gcc -Wall -Wextra -Werror -o ft_putstr ft_putstr.c ft_putchar.c main.c".split(" "), stderr=PIPE)
 err = pipe.communicate()[1]
 
 if err != "":
@@ -182,7 +182,7 @@ except OSError:
 	print("Done")
 	exit(1)
 
-pipe = Popen("gcc -shared -o ft_strlen ft_strlen.c".split(" "), stdout=PIPE, stderr=PIPE)
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_strlen ft_strlen.c".split(" "), stdout=PIPE, stderr=PIPE)
 output, err = pipe.communicate()
 
 if err != "":
@@ -204,3 +204,96 @@ if len1 != 3 or len2 != 0 or len3 != 10:
 	print("DUM DUM DUM DUM DUM DUM")
 	exit(1)
 print("ex06 RIGHT! One smart for you!")
+#--------------ex07-----------------#
+try:
+	chdir("../ex07")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_strrev ft_strrev.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex07.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+lib = ctypes.CDLL("./ft_strrev")
+ft_strrev = lib.ft_strrev
+ft_strrev.argstypes = [ctypes.c_char_p]
+ft_strrev.restype = ctypes.c_char_p
+test1 = ft_strrev("abc")
+test2 = ft_strrev("9876543210")
+
+if test1 != "cba" or test2 != "0123456789":
+	print("Error: ex07 failed!\nI got:\n" + test1 + " " + test2)
+	print("I expected:\ncba 01234567890")
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex07 RIGHT! One smart for you!")
+#--------------ex08-----------------#
+try:
+	chdir("../ex08")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_atoi ft_atoi.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex08.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+lib = ctypes.CDLL("./ft_atoi")
+ft_atoi = lib.ft_atoi
+ft_atoi.argstypes = [ctypes.c_char_p]
+ft_atoi.restype = ctypes.c_int
+test1 = ft_atoi("42")
+test2 = ft_atoi("-42")
+test3 = ft_atoi("0")
+test4 = ft_atoi("abc42abc")
+test5 = ft_atoi("2147483647")
+test6 = ft_atoi("-2147483648")
+test7 = ft_atoi("\t     \v\r\f+123")
+
+if test1 != 42 or test2 != -42 or test3 != 0 or test4 != 0 or test5 != 2147483647 or test6 != -2147483648 or test7 != 123:
+	print("Error: ex08 failed!\nI got:\n" + str(test1) + " " + str(test2) + " " + str(test3) + " " + str(test4) + " " + str(test5) + " " + str(test6) + " " + str(test7))
+	print("I expected:\n42 -42 0 0 2147483647 -2147483648 123")
+	print("DUM DUM DUM DUM DUM DUM")
+	#exit(1)
+print("ex08 RIGHT! One smart for you!")
+#--------------ex09-----------------#
+try:
+	chdir("../ex09")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_sort_integer_table ft_sort_integer_table.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex09.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+
+lib = ctypes.CDLL("./ft_sort_integer_table")
+ft_sort_integer_table = lib.ft_sort_integer_table
+ft_sort_integer_table.argstypes = [ctypes.POINTER(ctypes.c_int), ctypes.c_int]
+ft_sort_integer_table.restype = None
+arr = (ctypes.c_int * 3)
+array = arr(3, 2, 1)
+test1 = ft_sort_integer_table(array, 3)
+
+if array[0] != 1 or array[1] != 2 or array[2] != 3:
+	print("Error: ex09 failed!\nI got:\n" + str(array[0]) + str(array[1]) + str(array[2]))
+	print("I expected:\n123")
+	print("DUM DUM DUM DUM DUM DUM")
+	exit(1)
+print("ex09 RIGHT! One smart for you!")
