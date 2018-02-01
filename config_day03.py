@@ -251,7 +251,8 @@ else:
 		print("DUM DUM DUM DUM DUM DUM")
 		if option_i == 0:
 			exit(1)
-	print("ex07 RIGHT! One smart for you!")
+	else:
+		print("ex07 RIGHT! One smart for you!")
 #--------------ex08-----------------#
 try:
 	chdir("../ex08")
@@ -281,11 +282,13 @@ else:
 
 	if tests != awnsers:
 		print("Error: ex08 failed!\nI got:\n" + str(tests))
-		print("I expected:\n" + str(strings))
+		print("I expected:\n" + str(awnsers))
+		print("My strings were:\n" + str(strings))
 		print("DUM DUM DUM DUM DUM DUM")
 		if option_i == 0:
 			exit(1)
-	print("ex08 RIGHT! One smart for you!")
+		else:
+			print("ex08 RIGHT! One smart for you!")
 #--------------ex09-----------------#
 try:
 	chdir("../ex09")

@@ -40,7 +40,8 @@ else:
 		print("Error:\nex00 is not right:\n" + output)
 		print("Expected: abcdefghijklmnopqrstuvwxyz")
 		print("DUM DUM DUM DUM DUM DUM")
-		exit(1)
+		if option_i == 0:
+			exit(1)
 
 	print("ex00 RIGHT! One smart for you!")
 #--------------ex01-----------------#
@@ -67,7 +68,7 @@ else:
 	output = pipe.communicate()[0]
 	if output != "zyxwvutsrqponmlkjihgfedcba":
 		print("Error:\nex01 is not right:\n" + output)
-		print("Expected: zyxwvutsrqponmlkjihgfedcba")
+		print("Expected:\nzyxwvutsrqponmlkjihgfedcba")
 		print("DUM DUM DUM DUM DUM DUM")
 		if option_i == 0:
 			exit(1)
