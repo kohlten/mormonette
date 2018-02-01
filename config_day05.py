@@ -343,3 +343,79 @@ else:
 			exit(1)
 	else:
 		print("ex09 RIGHT! One smart for you!")
+#--------------ex10-----------------#
+try:
+	chdir("../ex10")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_strcapitalize ft_strcapitalize.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex10.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	if option_i == 0:
+		exit(1)
+else:
+	lib = CDLL("./ft_strcapitalize")
+	ft_strcapitalize = lib.ft_strcapitalize
+	ft_strcapitalize.argstypes = [c_char_p]
+	ft_strcapitalize.restype = c_char_p
+	tests = []
+	awnsers = ["Hello World!", "Salut, Comment Tu Vas ? 42mots Quarante-Deux; Cinquante+Et+En", "Hello World, I'm Currently Developing At The 42 Campus!"]
+	tests.append(ft_strcapitalize("hello world!"))
+	tests.append(ft_strcapitalize("salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un"))
+	tests.append(ft_strcapitalize("hello WORLD, i'm currently developing at the 42 campus!"))
+	if tests != awnsers:
+		print("Error: ex10 failed!\nI got:")
+		for test in tests:
+			print(test)
+		print("I expected:")
+		for awnser in awnsers:
+			print(awnser)
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex10 RIGHT! One smart for you!")
+#--------------ex11-----------------#
+try:
+	chdir("../ex11")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_str_is_alpha ft_str_is_alpha.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex11.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	if option_i == 0:
+		exit(1)
+else:
+	lib = CDLL("./ft_str_is_alpha")
+	ft_str_is_alpha = lib.ft_str_is_alpha
+	ft_str_is_alpha.argstypes = [c_char_p]
+	ft_str_is_alpha.restype = c_int
+	tests = []
+	awnsers = [1, 0, 0]
+	tests.append(ft_str_is_alpha("HelloWorld"))
+	tests.append(ft_str_is_alpha("12334abs"))
+	tests.append(ft_str_is_alpha("!+DSJDHSADA!+"))
+	if tests != awnsers:
+		print("Error: ex11 failed!\nI got:")
+		for test in tests:
+			print(test),
+		print("I expected:")
+		for awnser in awnsers:
+			print(awnser),
+		print("DUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex11 RIGHT! One smart for you!")
