@@ -1,7 +1,7 @@
 # mormonette
 42 stupidity redone in python...mormon style
 
-All you have to do is clone it
+All you have to do is clone it.
 Copy you dayXX folder into the same directory.
 Replacing XX with your day number. For instance, day02 or day12.
 Then run ./spawn.py.
