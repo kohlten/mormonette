@@ -15,5 +15,6 @@ Donzo
 If you have the error rm: directory not empty, it is not an error. This happends when you have to Ctrl-C due to an infinite loop. Just simply move the work folder to your trash and it will be fixed.
 
 #TODO: ADD BETTER WORDING, ADD CONFIG FILES FOR ALL DAYS AND PROJECTS, DEBUG THE SHIT OUT OF IT!#
+
 Side note:
   I apoligize if the name or anything within the program offends you. If you have an issue you can contact me at alex.strole004@gmail.com. For any improvements or suggestions, please either email me or add a pull request or open an issue. Thanks!
