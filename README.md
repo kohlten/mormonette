@@ -2,7 +2,7 @@
 42 stupidity redone in python...mormon style
 
 ## HOW TO:
-'''
+```
 All you have to do is clone it.
 Copy you dayXX folder into the same directory.
 Replacing XX with your day number. For instance, day02 or day12.
@@ -12,7 +12,7 @@ It will copy all your current files provided they are in the proper exXX folder.
 If you do not need to copy your files, you can just run the config file directly by either python config_dayXX.py or ./config_dayXX.py
 I hope it helps you during your piscine!
 Donzo
-'''
+```
 
 
 If you have the error rm: directory not empty, it is not an error. This happends when you have to Ctrl-C due to an infinite loop. Just simply move the work folder to your trash and it will be fixed.
