@@ -2,8 +2,9 @@
 from subprocess import Popen, PIPE
 from os import listdir, chdir
 from ctypes import *
-from sys import exit, argv
+from sys import exit, argv, settrace
 
+settrace
 option_i = 0
 main = ["int main() {\n\t", "\n\treturn 0;\n}"]
 text_putchar = "#include <unistd.h>\n\nvoid ft_putchar(char c)\n{\n\twrite(1, &c, 1);\n}"
@@ -411,7 +412,7 @@ else:
 		print("Error: ex11 failed!\nI got:")
 		for test in tests:
 			print(test),
-		print("I expected:")
+		print("\nI expected:")
 		for awnser in awnsers:
 			print(awnser),
 		print("DUM DUM DUM DUM DUM DUM")
@@ -419,3 +420,234 @@ else:
 			exit(1)
 	else:
 		print("ex11 RIGHT! One smart for you!")
+#--------------ex12-----------------#
+try:
+	chdir("../ex12")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_str_is_numeric ft_str_is_numeric.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex12.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	if option_i == 0:
+		exit(1)
+else:
+	lib = CDLL("./ft_str_is_numeric")
+	ft_str_is_numeric = lib.ft_str_is_numeric
+	ft_str_is_numeric.argstypes = [c_char_p]
+	ft_str_is_numeric.restype = c_int
+	tests = []
+	awnsers = [0, 1, 0]
+	tests.append(ft_str_is_numeric("HelloWorld"))
+	tests.append(ft_str_is_numeric("12334"))
+	tests.append(ft_str_is_numeric("!+DSJDHSADA!+"))
+	if tests != awnsers:
+		print("Error: ex12 failed!\nI got:")
+		for test in tests:
+			print(test),
+		print("\nI expected:")
+		for awnser in awnsers:
+			print(awnser),
+		print("\nDUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex12 RIGHT! One smart for you!")
+#--------------ex13-----------------#
+try:
+	chdir("../ex13")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_str_is_lowercase ft_str_is_lowercase.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex13.")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	if option_i == 0:
+		exit(1)
+else:
+	lib = CDLL("./ft_str_is_lowercase")
+	ft_str_is_lowercase = lib.ft_str_is_lowercase
+	ft_str_is_numeric.argstypes = [c_char_p]
+	ft_str_is_numeric.restype = c_int
+	tests = []
+	awnsers = [1, 0, 0]
+	tests.append(ft_str_is_lowercase("helloworld"))
+	tests.append(ft_str_is_lowercase("13334"))
+	tests.append(ft_str_is_lowercase("!+DSJDHSADA!+"))
+	if tests != awnsers:
+		print("Error: ex13 failed!\nI got:")
+		for test in tests:
+			print(test),
+		print("\nI expected:")
+		for awnser in awnsers:
+			print(awnser),
+		print("\nDUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex13 RIGHT! One smart for you!")
+#--------------ex14-----------------#
+try:
+	chdir("../ex14")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_str_is_uppercase ft_str_is_uppercase.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex14")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	if option_i == 0:
+		exit(1)
+else:
+	lib = CDLL("./ft_str_is_uppercase")
+	ft_str_is_uppercase = lib.ft_str_is_uppercase
+	ft_str_is_uppercase.argstypes = [c_char_p]
+	ft_str_is_uppercase.restype = c_int
+	tests = []
+	awnsers = [1, 0, 0]
+	tests.append(ft_str_is_uppercase("HELLOWORLD"))
+	tests.append(ft_str_is_uppercase("13334"))
+	tests.append(ft_str_is_uppercase("!+DSJDHSADA!+"))
+	if tests != awnsers:
+		print("Error: ex14 failed!\nI got:")
+		for test in tests:
+			print(test),
+		print("\nI expected:")
+		for awnser in awnsers:
+			print(awnser),
+		print("\nDUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex14 RIGHT! One smart for you!")
+#--------------ex15-----------------#
+try:
+	chdir("../ex15")
+except OSError:
+	print("Done")
+	exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_str_is_printable ft_str_is_printable.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex15")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	if option_i == 0:
+		exit(1)
+else:
+	lib = CDLL("./ft_str_is_printable")
+	ft_str_is_printable = lib.ft_str_is_printable
+	ft_str_is_printable.argstypes = [c_char_p]
+	ft_str_is_printable.restype = c_int
+	tests = []
+	awnsers = [0, 1, 1]
+	tests.append(ft_str_is_printable("\nHEY\n\v\t\f"))
+	tests.append(ft_str_is_printable("13334"))
+	tests.append(ft_str_is_printable("!+DSJDHSADA!+"))
+	if tests != awnsers:
+		print("Error: ex15 failed!\nI got:")
+		for test in tests:
+			print(test),
+		print("\nI expected:")
+		for awnser in awnsers:
+			print(awnser),
+		print("\nDUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex15 RIGHT! One smart for you!")
+#--------------ex16-----------------#
+try:
+	chdir("../ex16")
+except OSError:
+	print("Done")
+	if option_i == 0:
+		exit(1)
+
+pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_strcat ft_strcat.c".split(" "), stdout=PIPE, stderr=PIPE)
+output, err = pipe.communicate()
+
+if err != "":
+	print("Failed to compile on ex16")
+	print("Heres the error:\n " + err)
+	print("DUM DUM DUM DUM DUM DUM")
+	if option_i == 0:
+		exit(1)
+else:
+	lib = CDLL("./ft_strcat")
+	ft_strcat = lib.ft_strcat
+	ft_strcat.argstypes = [c_char_p, c_char_p]
+	ft_strcat.restype = c_char_p
+	tests = []
+	awnsers = ["Hello World!", "SFDJKHFKSJDHFKJSHDKJFHSD1234\n"]
+	tests.append(ft_strcat("Hello ", "World!"))
+	tests.append(ft_strcat("SFDJKHFKSJD" , "HFKJSHDKJFHSD1234\n"))
+	if tests != awnsers:
+		print("Error: ex16 failed!\nI got:")
+		for test in tests:
+			print(test),
+		print("\nI expected:")
+		for awnser in awnsers:
+			print(awnser),
+		print("\nDUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex16 RIGHT! One smart for you!")
+#--------------ex17-----------------#
+#WIP
+#try:
+#print "got"
+#chdir("../ex17")
+#print "Here"
+#except OSError:
+#	print("Done")
+#	if option_i == 0:
+#		exit(1)
+#pipe = Popen("gcc -Wall -Wextra -Werror -shared -o ft_strncat ft_strncat.c".split(" "), stdout=PIPE, stderr=PIPE)
+#output, err = pipe.communicate()
+
+#if err != "":
+#	print("Failed to compile on ex17")
+#	print("Heres the error:\n " + err)
+#	print("DUM DUM DUM DUM DUM DUM")
+#	if option_i == 0:
+#		exit(1)
+'''else:
+	lib = CDLL("./ft_strncat")
+	ft_strncat = lib.ft_strncat
+	ft_strncat.argstypes = [c_char_p, c_char_p, c_int]
+	ft_strncat.restype = c_char_p
+	tests = []
+	awnsers = ["Hello W", "SFDJKHFKSJDHFKJ"]
+	tests.append(ft_strncat("Hello ", "World!", 1))
+	tests.append(ft_strncat("SFDJKHFKSJD" , "HFKJSHDKJFHSD1234\n", 20))
+	print tests, "HI"
+	if tests != awnsers:
+		print("Error: ex17 failed!\nI got:")
+		for test in tests:
+			print(test),
+		print("\nI expected:")
+		for awnser in awnsers:
+			print(awnser),
+		print("\nDUM DUM DUM DUM DUM DUM")
+		if option_i == 0:
+			exit(1)
+	else:
+		print("ex17 RIGHT! One smart for you!")'''
